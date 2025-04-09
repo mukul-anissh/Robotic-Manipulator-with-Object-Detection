@@ -9,7 +9,7 @@ Servo elbowServo2;
 const int trigPin = 6;
 const int echoPin = 7;
 
-const int grabThreshold = 2; 
+const int grabThreshold = 10; 
 
 const int minAngle = -180;
 const int maxAngle = 180;
@@ -47,7 +47,7 @@ void loop() {
   if (distance > 0 && distance < grabThreshold && !clawClosed) {
     closeClaw();
     clawClosed = true;
-    delay(6000);
+    delay(4000);
     openClaw();
     clawClosed = false;
   }
@@ -121,6 +121,6 @@ void openClaw() {
 }
 
 void closeClaw() {
-  clawServo.write(90);
+  clawServo.write(180);
   clawClosed = true;
 }
